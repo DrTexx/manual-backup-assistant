@@ -53,3 +53,9 @@ with open('./.cache/tree.json') as f:
     # for each directory
     for item in dirs:
         handle_tree_item(item)
+
+# ----------------- #
+# --- Todo List --- #
+# ----------------- #
+
+# TODO(Denver): allow dirs and their children to be marked as "skipped", "backed up", "to back up"
