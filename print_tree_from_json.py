@@ -10,10 +10,15 @@ def handle_tree_item(tree_item):
             handle_tree_directory(tree_item)
         elif tree_item_type == 'link':
             handle_tree_link(tree_item)
+        elif tree_item_type == 'socket':
+            handle_tree_socket(tree_item)
+        elif tree_item_type == 'fifo':
+            handle_tree_fifo(tree_item)
         else:
-            raise Exception("it's not a file or directory! ah!")
+            print(f"unknown type: {tree_item_type}")
+            raise Exception("tree item type isn't a file, directory, link, socket or fifo! ah!")
     else:
-        raise Exception("i dunno")
+        raise Exception("tree item is missing the 'type' key")
 
 def handle_tree_file(tree_file):
     # TODO(Denver): actually implement this
@@ -31,6 +36,14 @@ def handle_tree_directory(tree_dir):
 def handle_tree_link(tree_link):
     # TODO(Denver): actually implement this
     print(tree_link)
+    
+def handle_tree_socket(tree_socket):
+    # TODO(Denver): actually implement this
+    print(tree_socket)
+    
+def handle_tree_fifo(tree_fifo):
+    # TODO(Denver): actually implement this
+    print(tree_fifo)
 
 with open('./.cache/tree.json') as f:
     data = json.load(f)
