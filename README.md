@@ -1,5 +1,7 @@
 # manual-backup-assistant
-Tool to help you keep track during the process of manually back up your system (for instance, to cut bloat before moving to a new OS)
+Tool to help you keep track during the process of manually backing up your system.
+
+For instance, instead of just backing up everything, you may want to **manually cut out any bloat or unnecessary files from your system before creating a backup** in preperation to move to a new OS. Alternatively, you may be looking for something to help you keep track as you move a subset of your media to cloud services so that it's available across all your devices instead of just the one.
 
 ## Getting started (Development)
 
