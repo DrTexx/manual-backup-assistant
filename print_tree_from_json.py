@@ -22,7 +22,8 @@ def handle_tree_item(tree_item):
 
 def handle_tree_file(tree_file):
     # TODO(Denver): actually implement this
-    print("it's a file!")
+    # print("it's a file!")
+    return
 
 def handle_tree_directory(tree_dir):
     # TODO(Denver): actually implement this
