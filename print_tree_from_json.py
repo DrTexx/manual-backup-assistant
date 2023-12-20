@@ -1,5 +1,30 @@
 import json
 
+# ----------------- #
+# --- constants --- #
+# ----------------- #
+
+labelled_dirs = [
+    {
+        "path": "/home/denver/.zoom",
+        "label": "skip"
+    }
+]
+
+# ------------ #
+# --- init --- #
+# ------------ #
+
+skip_dirs = []
+for labelled_dir in labelled_dirs:
+    label = labelled_dir['label']
+    if label == 'skip':
+        skip_dirs.append(labelled_dir['path'])
+
+# ------------- #
+# --- funcs --- #
+# ------------- #
+
 def handle_tree_item(tree_item):
     # if tree item has a type
     if 'type' in tree_item:
@@ -28,7 +53,14 @@ def handle_tree_file(tree_file):
 def handle_tree_directory(tree_dir):
     # TODO(Denver): actually implement this
     print("it's a dir!")
-    print(f"name: {tree_dir['name']}")
+    tree_dir_name = tree_dir['name']
+    print(f"name: {tree_dir_name}")
+
+    # if dirpath matches the dirs labelled to be skipped
+    if tree_dir_name in skip_dirs:
+        handle_skipped_dir(tree_dir)
+        return "skipped"
+
     tree_dir_contents = tree_dir['contents']
     print(f"contents: {len(tree_dir_contents)}")
     for tree_item in tree_dir_contents:
@@ -45,6 +77,10 @@ def handle_tree_socket(tree_socket):
 def handle_tree_fifo(tree_fifo):
     # TODO(Denver): actually implement this
     print(tree_fifo)
+    
+def handle_skipped_dir(skipped_dir):
+    # TODO(Denver): actually implement this
+    print("skipped!")
 
 with open('./.cache/tree.json') as f:
     data = json.load(f)
