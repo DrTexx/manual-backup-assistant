@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "manualbackupassistant"
+version = "0.1.0"
+description = ""
+authors = ["DrTexx <denver.opensource@tutanota.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/DrTexx/manual-backup-assistant"
+# TODO: add extra project details (e.g. keywords, classifiers, etc.)
+
+[tool.poetry.dependencies]
+python = "^3.7.3"
+
+[tool.poetry.group.dev.dependencies]
+twine = "^4.0.2"
+build = "^1.0.3"
+toml = "^0.10.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
