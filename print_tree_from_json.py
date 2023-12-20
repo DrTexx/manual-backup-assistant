@@ -50,6 +50,9 @@ def handle_tree_item(tree_item):
 def handle_tree_file(tree_file):
     # TODO(Denver): actually implement this
     # print("it's a file!")
+    
+    # NOTE: below does work MVP, it's just disabled for now
+    # print(f"[{tree_file.get('size','?'):<5}] {tree_file['name']}")
     return
 
 def handle_tree_directory(tree_dir):
@@ -59,9 +62,10 @@ def handle_tree_directory(tree_dir):
 
     is_skipped = tree_dir_name in skip_dirs
     is_todo = tree_dir_name in todo_dirs
+    is_empty = len(tree_dir_contents) < 1
 
     print(
-        "[dir] "
+        "[ dir ] "
         + (
             Fore.YELLOW
             + "SKIPPED "
@@ -74,6 +78,15 @@ def handle_tree_directory(tree_dir):
             + "TODO "
             + Style.RESET_ALL
             if is_todo
+            else ""
+        )
+        + (
+            Fore.BLACK
+            + Back.WHITE
+            + "EMPTY"
+            + Style.RESET_ALL
+            + " "
+            if is_empty
             else ""
         )
         + tree_dir_name
