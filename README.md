@@ -22,3 +22,8 @@ Tool to help you keep track during the process of manually back up your system (
 | ------------ | ------- | ------------ |
 | Poetry       | >1.5.1  | Pipx         |
 | Tree         | >1.8.0  | Apt          |
+
+## Limitations
+
+- Cannot handle parsing JSON if the output from `tree` contains filenames with invalid encoding
+- Cannot handle parsing JSON if the output from `tree` contains weird files that contain illegal chars like `\` bc the JSON parser tries to handle it like an escaped character
