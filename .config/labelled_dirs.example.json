@@ -1,0 +1,14 @@
+[
+    {
+        "path": "/home/denver/.zoom",
+        "label": "skip"
+    },
+    {
+        "path": "/home/denver/.wine/drive_c/windows",
+        "label": "skip"
+    },
+    {
+        "path": "/home/denver/Work",
+        "label": "todo"
+    }
+]

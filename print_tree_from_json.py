@@ -4,28 +4,13 @@ import json
 from colorama import Fore, Back, Style
 from colorama import init as colorama_init
 
-# ----------------- #
-# --- constants --- #
-# ----------------- #
-
-labelled_dirs = [
-    {
-        "path": "/home/denver/.zoom",
-        "label": "skip"
-    },
-    {
-        "path": "/home/denver/.wine/drive_c/windows",
-        "label": "skip"
-    },
-    {
-        "path": "/home/denver/Work",
-        "label": "todo"
-    }
-]
-
 # ------------ #
 # --- init --- #
 # ------------ #
+
+labelled_dirs = []
+with open('./.config/labelled_dirs.json','r') as f:
+    labelled_dirs = json.load(f)
 
 skip_dirs = []
 todo_dirs = []
@@ -125,11 +110,13 @@ def handle_tree_fifo(tree_fifo):
     
 def handle_skipped_dir(skipped_dir):
     # TODO(Denver): actually implement this
-    print("skipped!")
-    
+    # print("skipped!")
+    return
+
 def handle_todo_dir(todo_dir):
     # TODO(Denver): actually implement this
-    print("todo!")
+    # print("todo!")
+    return
 
 # -------------- #
 # --- script --- #
