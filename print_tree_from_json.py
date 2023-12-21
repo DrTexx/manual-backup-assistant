@@ -133,34 +133,37 @@ def handle_tree_directory(tree_dir):
     if skipped_count > 0:
         print("  (" + Fore.YELLOW + "skipped " + str(skipped_count) + Style.RESET_ALL + ")")
     
+    return {}
 
 def handle_tree_link(tree_link):
     # TODO(Denver): actually implement this
     # print(tree_link)
-    return
+    return {}
     
 def handle_tree_socket(tree_socket):
     # TODO(Denver): actually implement this
     print(tree_socket)
+    return {}
     
 def handle_tree_fifo(tree_fifo):
     # TODO(Denver): actually implement this
     print(tree_fifo)
+    return {}
     
 def handle_skipped_dir(skipped_dir):
     # TODO(Denver): actually implement this
     # print("skipped!")
-    return "skipped"
+    return {"label": "skipped"}
 
 def handle_todo_dir(todo_dir):
     # TODO(Denver): actually implement this
     # print("todo!")
-    return "todo"
+    return {"label": "todo"}
 
 def handle_empty_dir(empty_dir):
     # TODO(Denver): actually implement this
     # print("empty!")
-    return "empty"
+    return {"label": "empty"}
 
 # -------------- #
 # --- script --- #
