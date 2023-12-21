@@ -9,8 +9,9 @@ repository = "https://github.com/DrTexx/manual-backup-assistant"
 # TODO: add extra project details (e.g. keywords, classifiers, etc.)
 
 [tool.poetry.dependencies]
-python = "^3.7.3"
+python = "^3.8"
 colorama = "^0.4.6"
+humanize = "^4.9.0"
 
 [tool.poetry.group.dev.dependencies]
 twine = "^4.0.2"
