@@ -1,5 +1,6 @@
 # builtin
 import json
+from humanize import naturalsize
 # site
 from colorama import Fore, Back, Style
 from colorama import init as colorama_init
@@ -132,6 +133,13 @@ def handle_tree_directory(tree_dir):
     skipped_count = outputs.count('skipped')
     if skipped_count > 0:
         print("  (" + Fore.YELLOW + "skipped " + str(skipped_count) + Style.RESET_ALL + ")")
+        
+    file_size_sum = 0
+    for output in outputs:
+        if 'size' in output:
+            file_size_sum += output['size']
+    if file_size_sum > 0:
+        print(f"  (size of contents ({tree_dir_name}): " + naturalsize(file_size_sum) + ")")
     
     return {}
 
