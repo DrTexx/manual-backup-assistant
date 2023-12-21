@@ -20,10 +20,11 @@ For instance, instead of just backing up everything, you may want to **manually 
 
 ### Prerequisites
 
-| Prerequisite | Version | Install with |
-| ------------ | ------- | ------------ |
-| Poetry       | >1.5.1  | Pipx         |
-| Tree         | >1.8.0  | Apt          |
+| Prerequisite | Version | Install with   |
+| ------------ | ------- | -------------- |
+| Poetry       | >1.5.1  | Pipx           |
+| Tree         | >1.8.0  | Apt            |
+| Python       | >3.8    | Apt (or pyenv) |
 
 ## Limitations
 
