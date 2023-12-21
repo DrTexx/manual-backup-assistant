@@ -33,15 +33,15 @@ def handle_tree_item(tree_item):
     if 'type' in tree_item:
         tree_item_type = tree_item['type']
         if tree_item_type == 'file':
-            handle_tree_file(tree_item)
+            return handle_tree_file(tree_item)
         elif tree_item_type == 'directory':
-            handle_tree_directory(tree_item)
+            return handle_tree_directory(tree_item)
         elif tree_item_type == 'link':
-            handle_tree_link(tree_item)
+            return handle_tree_link(tree_item)
         elif tree_item_type == 'socket':
-            handle_tree_socket(tree_item)
+            return handle_tree_socket(tree_item)
         elif tree_item_type == 'fifo':
-            handle_tree_fifo(tree_item)
+            return handle_tree_fifo(tree_item)
         else:
             print(f"unknown type: {tree_item_type}")
             raise Exception("tree item type isn't a file, directory, link, socket or fifo! ah!")
@@ -114,16 +114,25 @@ def handle_tree_directory(tree_dir):
 
     # if dirpath has skip label
     if is_skipped:
-        handle_skipped_dir(tree_dir)
-        return "skipped"
+        return handle_skipped_dir(tree_dir)
     
     # if dirpath has todo label
     if is_todo:
-        handle_todo_dir(tree_dir)
-        return "todo"
+        return handle_todo_dir(tree_dir)
 
+    # if dirpath is empty
+    if is_empty:
+        return handle_empty_dir(tree_dir)
+
+    outputs = []
     for tree_item in tree_dir_contents:
-        handle_tree_item(tree_item)
+        outputs.append(handle_tree_item(tree_item))
+    
+    # list number of children skipped
+    skipped_count = outputs.count('skipped')
+    if skipped_count > 0:
+        print("  (" + Fore.YELLOW + "skipped " + str(skipped_count) + Style.RESET_ALL + ")")
+    
 
 def handle_tree_link(tree_link):
     # TODO(Denver): actually implement this
@@ -141,12 +150,17 @@ def handle_tree_fifo(tree_fifo):
 def handle_skipped_dir(skipped_dir):
     # TODO(Denver): actually implement this
     # print("skipped!")
-    return
+    return "skipped"
 
 def handle_todo_dir(todo_dir):
     # TODO(Denver): actually implement this
     # print("todo!")
-    return
+    return "todo"
+
+def handle_empty_dir(empty_dir):
+    # TODO(Denver): actually implement this
+    # print("empty!")
+    return "empty"
 
 # -------------- #
 # --- script --- #
