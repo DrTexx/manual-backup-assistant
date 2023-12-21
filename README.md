@@ -10,7 +10,7 @@ For instance, instead of just backing up everything, you may want to **manually 
     ```bash
     cd <path_to_local_copy_of_repo> # navigate to your local copy of this repo
     poetry install # install project dependencies in isolated environment
-    tree ~ -afshDJ --dirsfirst --sort="size" > ./.cache/tree.json # generate dir tree report
+    tree ~ -afsDJ --dirsfirst --sort="size" > ./.cache/tree.json # generate dir tree report
     ```
 3. Create a `.config/labelled_dirs.json` file (you can use `.config/labelled_dirs.example.json` as a template)
 4. Run the script
