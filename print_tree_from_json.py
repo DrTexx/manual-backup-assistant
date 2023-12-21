@@ -12,14 +12,15 @@ labelled_dirs = []
 with open('./.config/labelled_dirs.json','r') as f:
     labelled_dirs = json.load(f)
 
-skip_dirs = []
-todo_dirs = []
+skip_dirs = {}
+todo_dirs = {}
 for labelled_dir in labelled_dirs:
     label = labelled_dir['label']
+    label_path = labelled_dir['path']
     if label == 'skip':
-        skip_dirs.append(labelled_dir['path'])
+        skip_dirs[label_path] = labelled_dir
     elif label == 'todo':
-        todo_dirs.append(labelled_dir['path'])
+        todo_dirs[label_path] = labelled_dir
     else:
         raise Exception(f"dirpath entry has an invalid label! ({label})")
 
@@ -92,7 +93,23 @@ def handle_tree_directory(tree_dir):
         + tree_dir_name
         + " ("
         + str(len(tree_dir_contents))
-        + ")"
+        + ") "
+        + (
+            "- "
+            + Fore.YELLOW
+            + skip_dirs[tree_dir_name]["note"]
+            + Style.RESET_ALL
+            if is_skipped and "note" in skip_dirs[tree_dir_name]
+            else ""
+        )
+        + (
+            "- "
+            + Fore.BLUE
+            + todo_dirs[tree_dir_name]["note"]
+            + Style.RESET_ALL
+            if is_todo and "note" in todo_dirs[tree_dir_name]
+            else ""
+        )
     )
 
     # if dirpath has skip label
