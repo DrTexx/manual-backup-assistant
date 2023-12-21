@@ -54,7 +54,7 @@ def handle_tree_file(tree_file):
     
     # NOTE: below does work MVP, it's just disabled for now
     # print(f"[{tree_file.get('size','?'):<5}] {tree_file['name']}")
-    return
+    return {"size": tree_file['size']}
 
 def handle_tree_directory(tree_dir):
     # TODO(Denver): actually implement this
