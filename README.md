@@ -29,4 +29,5 @@ For instance, instead of just backing up everything, you may want to **manually 
 ## Limitations
 
 - Cannot handle parsing JSON if the output from `tree` contains filenames with invalid encoding
-- Cannot handle parsing JSON if the output from `tree` contains weird files that contain illegal chars like `\` bc the JSON parser tries to handle it like an escaped character
+- Cannot handle parsing JSON if the output from `tree` contains weird filenames with illegal chars like `\` bc the JSON parser tries to handle it like an escaped character
+  - e.g. The Linux native version of the game 'Speedrunners' had created a directory named `[...]/Ghost\Replay/` on my machine that needed to be deleted before I could successfully parse the JSON output from `tree`)
